@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Vaughn Hartzell 001 ***
  *
  * This java file contains several simple tree problems that need to be
  * codified. These routines  must use the TreeMap and TreeSet library
@@ -20,14 +20,18 @@ public class TreeProblems {
    */
   
   public static Set<Integer> different(Set<Integer> setA, Set<Integer> setB) {
-
-    // INSERT CODE HERE - DO NOT FORGET TO PLACE YOUR NAME ABOVE
-    //
-    // This can be done numerous ways, but once such will only that
-    // *several* lines of code. Hint: create two temporary TreeSets and utilize the
-    // methods retainAll(), addAll(), and removeAll(). But in the end, get something to work.
-
-    return setA;
+    Set<Integer> ans = new TreeSet<>();
+    for(Integer a : setA){
+      if(!setB.contains(a)){
+        ans.add(a);
+      }
+    }
+    for(Integer b : setB){
+      if(!setA.contains(b)){
+        ans.add(b);
+      }
+    }
+    return ans;
   }
 
 
@@ -39,9 +43,15 @@ public class TreeProblems {
    */
 
   public static void removeEven(Map<Integer, String> treeMap) {
-
-    // INSERT CODE HERE.
-
+    List<Integer> removeList = new ArrayList<>();
+    for(Integer x : treeMap.keySet()){
+      if(x%2==0){
+        removeList.add(x);
+      }
+    }
+    for(Integer a : removeList){
+      treeMap.remove(a);
+    }
     return;
   }
 
@@ -54,11 +64,15 @@ public class TreeProblems {
    */
 
   public boolean treesEqual(Map<Integer, String> tree1,Map<Integer, String> tree2 ) {
-
-    // INSERT CODE HERE
-
-    return false;
-
+    if(tree1.size()!=tree2.size()){
+      return false;
+    }
+    for(Integer a : tree1.keySet()){
+      if(!tree2.containsKey(a)||tree1.get(a)!=tree2.get(a)){
+        return false;
+      }
+    }
+    return true;
   }
 
 } // end treeProblems class
